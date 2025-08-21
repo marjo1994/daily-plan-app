@@ -1,5 +1,3 @@
 export const MyTask = () => {
-    return (
-        <h1>My task</h1>
-    )
-}
+  return <h1>My task</h1>;
+};

@@ -1,0 +1,9 @@
+@use 'variables';
+
+@mixin status-colors {
+  @each $status, $color in variables.$status-colors {
+    &.-#{$status} {
+      color: $color;
+    }
+  }
+}

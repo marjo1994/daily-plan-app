@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { Layout } from "./Layout";
-import './scss/main.scss'
+import { Layout } from './Layout';
+import './scss/main.scss';
 import { MainDashboard } from './pages/MainDashboard';
 import { MyTask } from './pages/MyTask';
 import { TaskCategories } from './pages/TaskCategories';
@@ -16,8 +16,7 @@ function App() {
         </Routes>
       </Layout>
     </Router>
-  )
+  );
 }
 
-export default App
-
+export default App;

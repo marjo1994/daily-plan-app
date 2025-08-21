@@ -1,8 +1,16 @@
-$font-stack: "Infer", sans-serif; 
+$font-stack: 'Infer', sans-serif;
 $primary-color: #000000;
-$pink-color: #FF6767;
-$white-color: #FFFFFF;
-$gray-color: #F8F8F8;
-$blue-color: #3ABEFF;
-$background-color: #F5F8FF;
+$pink-color: #ff6767;
+$white-color: #ffffff;
+$gray-color: #f8f8f8;
+$gray-2-color: #a1a3ab;
+$gray-3-color: #747474;
+$blue-color: #3abeff;
+$background-color: #f5f8ff;
 $line-height-base: 1.2;
+
+$status-colors: (
+  'inprogress': #0225ff,
+  'todo': #f21e1e,
+  'completed': #05a301,
+);
