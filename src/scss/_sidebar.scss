@@ -1,0 +1,66 @@
+.sidebar {
+    background-color: $pink-color;
+    padding: 1rem;
+    min-height: 100vh;
+    color: $white-color;
+    position: relative;
+    margin-top: 3rem;
+    .user-photo {
+        width: 100px;
+        height: auto;
+        border-radius: 50%;
+        position: absolute;
+        top: -50px;
+        transform: translateX(90%);
+    }
+
+    .user-info {
+        text-align: center;
+        margin-bottom: 2rem;
+        margin-top: 5rem;
+        p {
+            margin: 0;
+            &.user-name {
+                font-weight: 700;
+                margin: 0.4rem 0;
+            }
+            &.user-email {
+                font-size: 0.75rem;
+            }
+        }
+    }
+    .sidebar-nav {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 3rem;
+    }
+
+    .sidebar-item {
+        padding: 1.25rem;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        text-decoration: none;
+        .sidebar-icon {
+            img {
+                margin-right: 1rem;
+            }
+        }
+        .sidebar-label {
+            color: $white-color;
+        }
+        &.active {
+            background-color: $white-color;
+            border-radius: 10px;
+            .sidebar-icon {
+                img {
+                    margin-right: 1rem;
+                    filter: invert(63%) sepia(49%) saturate(1907%) hue-rotate(316deg) brightness(98%) contrast(105%);
+                }
+            }
+            .sidebar-label {
+                color: $pink-color;
+            }
+        }
+    }
+}

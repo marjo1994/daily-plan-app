@@ -1,0 +1,51 @@
+.navbar {
+    background-color: $gray-color;
+    padding: 2rem 4.5rem 1.5rem 4.5rem;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 20px;
+    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.07);
+    align-items: center;
+
+    .search-container {
+        display: flex;
+        align-items: center;
+        input[type=text] {
+          box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.07);
+          border-radius: 8px 0px 0px 8px;
+          width: 80%;  
+          padding: 6px;
+          font-size: 17px;
+          border: none;
+        }
+    }
+
+    button {
+        &.search {
+          float: right;
+        }
+        border-radius: 5px;
+        padding: 6px 10px;
+        background: $pink-color;
+        font-size: 17px;
+        border: none;
+        cursor: pointer;
+    }
+
+    .date-navbar {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        p {
+            margin-left: auto;
+            .date {
+                color: $blue-color
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 600px) {
+
+
+}

@@ -1,0 +1,8 @@
+.layout {
+    .layout-container {
+        min-height: 100vh;
+        display: grid;
+        grid-template-columns: 350px auto;
+        gap: 20px;
+    }
+}
