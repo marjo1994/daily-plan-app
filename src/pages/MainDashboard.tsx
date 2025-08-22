@@ -7,6 +7,7 @@ import statusIcon from '../assets/status-icon.svg';
 import completedBarIcon from '../assets/completed-bar-icon.svg';
 import type { Task } from '../types';
 import { fetchTasks } from '../api';
+import { ProgressBar } from '../components/ProgressBar';
 
 export const MainDashboard = () => {
   const { data, isLoading, isError, error } = useQuery({
@@ -21,6 +22,8 @@ export const MainDashboard = () => {
   if (isError) {
     return <div>Error: {error.message}</div>;
   }
+
+  const completedTasks = data.filter((i: Task) => i.status == 'completed');
 
   return (
     <div className="main-dashboard">
@@ -65,7 +68,6 @@ export const MainDashboard = () => {
                   Priority: <span>{task.priority}</span>
                 </p>
                 <p>
-                  Status:{' '}
                   <span className={`status -${task.status}`}>
                     {task.status}
                   </span>
@@ -82,6 +84,7 @@ export const MainDashboard = () => {
               <span className="section-label">Task Status</span>
             </div>
           </div>
+          <ProgressBar data={data} />
         </div>
         <div className="section-dashboard">
           <div className="section-header">
@@ -90,55 +93,28 @@ export const MainDashboard = () => {
               <span className="section-label">Completed Task</span>
             </div>
           </div>
-
-          <div className="todo-card completed">
-            <div className="todo-status">
-              <img src={completedBarIcon} alt="completed bar icon" />
-            </div>
-            <div className="todo-content">
-              <div className="todo-text">
-                <h3>Conduct meeting</h3>
-                <p>
-                  Buy gifts on the way and pick up cake from the bakery. (6 PM |
-                  Fresh Elements).....
-                </p>
-                <div className="todo-information">
-                  <p>
-                    Status:{' '}
-                    <span className="status -completed">Not Started</span>
-                  </p>
-                  <p className="todo-date">Created on: 20/06/2023</p>
+          {completedTasks.map((task: Task) => (
+            <div key={task.id} className="todo-card completed">
+              <div className="todo-status">
+                <img src={completedBarIcon} alt="completed bar icon" />
+              </div>
+              <div className="todo-content">
+                <div className="todo-text">
+                  <h3>{task.title}</h3>
+                  <p>{task.description}</p>
+                  <div className="todo-information">
+                    <p>
+                      <span className="status -completed">{task.status}</span>
+                    </p>
+                    <p className="todo-date">Created on: 20/06/2023</p>
+                  </div>
+                </div>
+                <div className="todo-img">
+                  <img src={task.image} alt={task.title} />
                 </div>
               </div>
-              <div className="todo-img">
-                <img src="" alt="" />
-              </div>
             </div>
-          </div>
-          <div className="todo-card completed">
-            <div className="todo-status">
-              <img src={completedBarIcon} alt="completed bar icon" />
-            </div>
-            <div className="todo-content">
-              <div className="todo-text">
-                <h3>Conduct meeting</h3>
-                <p>
-                  Buy gifts on the way and pick up cake from the bakery. (6 PM |
-                  Fresh Elements).....
-                </p>
-                <div className="todo-information">
-                  <p>
-                    Status:{' '}
-                    <span className="status -completed">Not Started</span>
-                  </p>
-                  <p className="todo-date">Created on: 20/06/2023</p>
-                </div>
-              </div>
-              <div className="todo-img">
-                <img src="" alt="" />
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </div>

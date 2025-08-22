@@ -1,8 +1,23 @@
 .layout {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
   .layout-container {
     min-height: 100vh;
     display: grid;
     grid-template-columns: 350px auto;
     gap: 4.5rem;
+    overflow: hidden;
+    min-height: 0;
+    // SideBar (primer hijo)
+    /* > *:first-child {
+      overflow-y: auto; // Hacer la barra lateral desplazable si es necesario
+      height: 100%;
+    }*/
+
+    & > *:nth-child(2) {
+      overflow-y: auto;
+      height: 100%;
+    }
   }
 }

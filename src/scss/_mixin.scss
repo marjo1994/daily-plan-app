@@ -3,7 +3,8 @@
 @mixin status-colors {
   @each $status, $color in variables.$status-colors {
     &.-#{$status} {
-      color: $color;
+      --status-color: #{$color};
+      color: var(--status-color);
     }
   }
 }
