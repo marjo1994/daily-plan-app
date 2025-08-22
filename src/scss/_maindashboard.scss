@@ -69,6 +69,7 @@
       }
       .section-date {
         font-size: 0.8rem;
+        margin-bottom: 1rem;
         span {
           color: variables.$gray-2-color;
           margin-left: 0.5rem;
@@ -78,7 +79,7 @@
         position: relative;
         border: 1px solid variables.$gray-2-color;
         border-radius: 14px;
-        padding: 0.5rem 2rem 0.5rem 3rem;
+        padding: 0.8rem 2rem 0.8rem 3rem;
         margin-bottom: 1rem;
         .todo-status {
           position: absolute;
@@ -92,9 +93,9 @@
         .todo-content {
           display: flex;
           flex-direction: row;
-
+          margin-bottom: 1rem;
           .todo-text {
-            width: 60%;
+            width: 70%;
             h3 {
               margin-top: 0px;
             }
@@ -103,8 +104,10 @@
             }
           }
           .todo-img {
-            width: 40%;
+            width: 30%;
             img {
+              object-fit: cover;
+              height: 100px;
               width: 100%;
             }
           }

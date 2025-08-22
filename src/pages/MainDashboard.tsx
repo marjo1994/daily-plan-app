@@ -1,14 +1,30 @@
+import { useQuery } from '@tanstack/react-query';
 import todoIcon from '../assets/to-do-icon.svg';
 import plusIcon from '../assets/plus-icon-2.svg';
 import pendingIcon from '../assets/pending-icon.svg';
 import completedIcon from '../assets/completed-task-icon.svg';
 import statusIcon from '../assets/status-icon.svg';
 import completedBarIcon from '../assets/completed-bar-icon.svg';
+import type { Task } from '../types';
+import { fetchTasks } from '../api';
 
 export const MainDashboard = () => {
-    return (
+  const { data, isLoading, isError, error } = useQuery({
+    queryKey: ['todos'],
+    queryFn: fetchTasks,
+  });
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (isError) {
+    return <div>Error: {error.message}</div>;
+  }
+
+  return (
     <div className="main-dashboard">
-      <h1 className="welcome-text">Welcome back, Sunder</h1>
+      <h1 className="welcome-text">Welcome back, Sundar</h1>
       <div className="content-dashboard">
         <div className="section-dashboard">
           <div className="section-header">
@@ -26,58 +42,38 @@ export const MainDashboard = () => {
           <p className="section-date">
             20 June <span>Today</span>
           </p>
-          <div className="todo-card">
-            <div className="todo-status">
-              <img src={pendingIcon} alt="progress icon" />
-            </div>
-            <div className="todo-content">
-              <div className="todo-text">
-                <h3>Attend Nischal’s Birthday Party</h3>
+          {data.map((task: Task) => (
+            <div className="todo-card" key={task.id}>
+              <div className="todo-status">
+                <img src={pendingIcon} alt="progress icon" />
+              </div>
+              <div className="todo-content">
+                <div className="todo-text">
+                  <h3>{task.title}</h3>
+                  <p>{task.description}</p>
+                </div>
+                <div className="todo-img">
+                  <img
+                    className="thumbnail-img"
+                    src={task.image}
+                    alt={task.title}
+                  />
+                </div>
+              </div>
+              <div className="todo-information">
                 <p>
-                  Buy gifts on the way and pick up cake from the bakery. (6 PM |
-                  Fresh Elements).....
+                  Priority: <span>{task.priority}</span>
                 </p>
-              </div>
-              <div className="todo-img">
-                <img src="" alt="" />
-              </div>
-            </div>
-            <div className="todo-information">
-              <p>
-                Priority: <span>Moderate</span>
-              </p>
-              <p>
-                Status: <span className="status -todo">Not Started</span>
-              </p>
-              <p className="todo-date">Created on: 20/06/2023</p>
-            </div>
-          </div>
-          <div className="todo-card">
-            <div className="todo-status">
-              <img src={pendingIcon} alt="progress icon" />
-            </div>
-            <div className="todo-content">
-              <div className="todo-text">
-                <h3>Attend Nischal’s Birthday Party</h3>
                 <p>
-                  Buy gifts on the way and pick up cake from the bakery. (6 PM |
-                  Fresh Elements).....
+                  Status:{' '}
+                  <span className={`status -${task.status}`}>
+                    {task.status}
+                  </span>
                 </p>
-              </div>
-              <div className="todo-img">
-                <img src="" alt="" />
+                <p className="todo-date">Created on: 20/06/2023</p>
               </div>
             </div>
-            <div className="todo-information">
-              <p>
-                Priority: <span>Moderate</span>
-              </p>
-              <p>
-                Status: <span className="status -todo">Not Started</span>
-              </p>
-              <p className="todo-date">Created on: 20/06/2023</p>
-            </div>
-          </div>
+          ))}
         </div>
         <div className="section-dashboard">
           <div className="section-header">

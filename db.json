@@ -1,0 +1,114 @@
+{
+  "todos": [
+    {
+      "id": 1,
+      "title": "Setting up Recipes App",
+      "description": "Research which technologies to use",
+      "status": "todo",
+      "priority": "moderate",
+      "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
+      "createdAt": "2023-10-10T08:30:00Z",
+      "updatedAt": "2023-10-10T08:30:00Z",
+      "completedAt": null
+    },
+    {
+      "id": 2,
+      "title": "Create Project Structure",
+      "description": "Set up folders and basic components",
+      "status": "inprogress",
+      "priority": "moderate",
+      "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
+      "createdAt": "2023-10-05T14:20:00Z",
+      "updatedAt": "2023-10-12T09:45:00Z",
+      "completedAt": null
+    },
+    {
+      "id": 3,
+      "title": "Design Database Schema",
+      "description": "Plan and create database structure for recipes",
+      "status": "completed",
+      "priority": "extreme",
+      "image": "https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
+      "createdAt": "2023-09-28T10:15:00Z",
+      "updatedAt": "2023-10-08T16:30:00Z",
+      "completedAt": "2023-10-08T16:30:00Z"
+    },
+    {
+      "id": 4,
+      "title": "Implement User Authentication",
+      "description": "Add login and registration functionality",
+      "status": "todo",
+      "priority": "extreme",
+      "image": "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
+      "createdAt": "2023-10-15T11:20:00Z",
+      "updatedAt": "2023-10-15T11:20:00Z",
+      "completedAt": null
+    },
+    {
+      "id": 5,
+      "title": "Create Recipe Listing Page",
+      "description": "Build the main page to display all recipes",
+      "status": "inprogress",
+      "priority": "moderate",
+      "image": "https://images.unsplash.com/photo-1506784983877-45594efa4cbe?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
+      "createdAt": "2023-10-03T13:45:00Z",
+      "updatedAt": "2023-10-14T10:30:00Z",
+      "completedAt": null
+    },
+    {
+      "id": "6",
+      "title": "Add Search Functionality",
+      "description": "Implement search and filter features",
+      "status": "todo",
+      "priority": "low",
+      "image": "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
+      "createdAt": "2023-10-12T09:10:00Z",
+      "updatedAt": "2023-10-12T09:10:00Z",
+      "completedAt": null
+    },
+    {
+      "id": 7,
+      "title": "Testing and Debugging",
+      "description": "Perform comprehensive testing of all features",
+      "status": "todo",
+      "priority": "moderate",
+      "image": "https://images.unsplash.com/photo-1543286386-713bdd548da4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
+      "createdAt": "2023-10-11T16:45:00Z",
+      "updatedAt": "2023-10-11T16:45:00Z",
+      "completedAt": null
+    },
+    {
+      "id": 8,
+      "title": "Deploy to Production",
+      "description": "Prepare and deploy the application to production server",
+      "status": "todo",
+      "priority": "extreme",
+      "image": "https://images.unsplash.com/photo-1477244075012-5cc28286e465?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
+      "createdAt": "2023-10-09T08:15:00Z",
+      "updatedAt": "2023-10-09T08:15:00Z",
+      "completedAt": null
+    },
+    {
+      "id": 9,
+      "title": "Write Documentation",
+      "description": "Create user and developer documentation",
+      "status": "todo",
+      "priority": "low",
+      "image": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
+      "createdAt": "2023-10-13T14:20:00Z",
+      "updatedAt": "2023-10-13T14:20:00Z",
+      "completedAt": null
+    },
+    {
+      "id": 10,
+      "title": "Gather User Feedback",
+      "description": "Collect and analyze feedback from initial users",
+      "status": "todo",
+      "priority": "low",
+      "image": "https://images.unsplash.com/photo-1533750349088-cd871a92f312?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
+      "createdAt": "2023-10-07T11:30:00Z",
+      "updatedAt": "2023-10-07T11:30:00Z",
+      "completedAt": null
+    }
+  ]
+}
