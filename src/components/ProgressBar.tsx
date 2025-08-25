@@ -3,8 +3,6 @@ import 'react-circular-progressbar/dist/styles.css';
 import ProgressProvider from '../utils/ProgressProvider.js';
 import type { Task } from '../types.js';
 
-const percentage = 66;
-
 export const ProgressBar = ({ data }: { data: Task[] }) => {
   const completedTasks = data.filter(i => i.status == 'completed').length;
   const inprogressTasks = data.filter(i => i.status == 'inprogress').length;
@@ -20,7 +18,7 @@ export const ProgressBar = ({ data }: { data: Task[] }) => {
     <div className="circular-bars">
       <div className="circular-bar" style={{ width: 100, height: 100 }}>
         <ProgressProvider valueStart={0} valueEnd={completedTasksPercentage}>
-          {completedTasksPercentage => (
+          {(completedTasksPercentage: number) => (
             <CircularProgressbar
               value={completedTasksPercentage}
               text={`${completedTasksPercentage}%`}
@@ -42,7 +40,7 @@ export const ProgressBar = ({ data }: { data: Task[] }) => {
       </div>
       <div className="circular-bar" style={{ width: 100, height: 100 }}>
         <ProgressProvider valueStart={0} valueEnd={inprogressTasksPercentage}>
-          {inprogressTasksPercentage => (
+          {(inprogressTasksPercentage: number) => (
             <CircularProgressbar
               value={inprogressTasksPercentage}
               text={`${inprogressTasksPercentage}%`}
@@ -64,7 +62,7 @@ export const ProgressBar = ({ data }: { data: Task[] }) => {
       </div>
       <div className="circular-bar" style={{ width: 100, height: 100 }}>
         <ProgressProvider valueStart={0} valueEnd={todoTasksPercentage}>
-          {todoTasksPercentage => (
+          {(todoTasksPercentage: number) => (
             <CircularProgressbar
               value={todoTasksPercentage}
               text={`${todoTasksPercentage}%`}

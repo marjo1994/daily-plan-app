@@ -1,0 +1,62 @@
+@use '../variables';
+@use '../mixin' as mix;
+
+.todo-card {
+  position: relative;
+  border: 1px solid variables.$gray-2-color;
+  border-radius: 14px;
+  padding: 0.8rem 2rem 0.8rem 3rem;
+  margin-bottom: 1rem;
+  .todo-status {
+    position: absolute;
+    left: 5%;
+    text-align: center;
+    img {
+      display: block;
+      margin: 0 auto;
+    }
+  }
+  .todo-content {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 1rem;
+    .todo-text {
+      width: 70%;
+      h3 {
+        margin-top: 0px;
+      }
+      p {
+        color: variables.$gray-3-color;
+      }
+    }
+    .todo-img {
+      width: 30%;
+      img {
+        object-fit: cover;
+        height: 100px;
+        width: 100%;
+      }
+    }
+  }
+  .todo-information {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    p {
+      span {
+        &.status {
+          @include mix.status-colors;
+        }
+      }
+      &.todo-date {
+        color: variables.$gray-2-color;
+      }
+    }
+  }
+  &.completed {
+    .todo-information {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}

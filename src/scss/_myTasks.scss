@@ -1,0 +1,58 @@
+@use 'variables';
+@use 'mixin' as mix;
+
+.my-tasks {
+  margin-top: 4rem;
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1.4fr 2fr;
+  grid-template-rows: auto;
+  gap: 1.5rem;
+  padding: 1rem;
+  overflow-y: auto;
+  section {
+    box-shadow: 0px 3px 3px 3px rgba(0, 0, 0, 0.25);
+    border-radius: 14px;
+    padding: 1.5rem;
+  }
+  .todo-info {
+    .todo-header {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      grid-template-rows: auto;
+      gap: 1rem;
+      p {
+        margin-bottom: 1rem;
+        span {
+          &.status {
+            @include mix.status-colors;
+          }
+        }
+
+        &.todo-date {
+          color: variables.$gray-2-color;
+        }
+      }
+    }
+    .todo-large-description {
+      color: variables.$gray-3-color;
+      margin-top: 1rem;
+      .task-section {
+        margin-bottom: 1rem;
+        line-height: 1.8;
+        .section-label {
+          font-weight: 700;
+        }
+      }
+    }
+    .actions-todo {
+      float: right;
+      margin-left: auto;
+      button {
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+      }
+    }
+  }
+}

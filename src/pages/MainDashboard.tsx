@@ -6,22 +6,18 @@ import completedIcon from '../assets/completed-task-icon.svg';
 import statusIcon from '../assets/status-icon.svg';
 import completedBarIcon from '../assets/completed-bar-icon.svg';
 import type { Task } from '../types';
-import { fetchTasks } from '../api';
+import { getTodos } from '../api';
 import { ProgressBar } from '../components/ProgressBar';
 
 export const MainDashboard = () => {
   const { data, isLoading, isError, error } = useQuery({
     queryKey: ['todos'],
-    queryFn: fetchTasks,
+    queryFn: getTodos,
   });
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
+  if (isLoading) return <div>Loading...</div>;
 
-  if (isError) {
-    return <div>Error: {error.message}</div>;
-  }
+  if (isError) return <div>Error: {error.message}</div>;
 
   const completedTasks = data.filter((i: Task) => i.status == 'completed');
 
@@ -68,6 +64,7 @@ export const MainDashboard = () => {
                   Priority: <span>{task.priority}</span>
                 </p>
                 <p>
+                  Status:{' '}
                   <span className={`status -${task.status}`}>
                     {task.status}
                   </span>

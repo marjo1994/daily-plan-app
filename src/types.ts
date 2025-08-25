@@ -13,3 +13,11 @@ export interface Task {
   updatedAt: string;
   completedAt: string | null;
 }
+
+export interface TodoStore {
+  todos: Task[];
+  isLoading: boolean;
+  isError: boolean;
+  error: string | null;
+  fetchTodos: () => Promise<void>;
+}
