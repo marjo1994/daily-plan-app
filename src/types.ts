@@ -3,15 +3,16 @@ type TaskStatus = 'todo' | 'inprogress' | 'completed';
 type TaskPriority = 'low' | 'moderate' | 'extreme';
 
 export interface Task {
-  id: number;
+  id: string;
   title: string;
   description: string;
-  image: string;
+  image?: string;
   status: TaskStatus;
   priority: TaskPriority;
   createdAt: string;
   updatedAt: string;
-  completedAt: string | null;
+  completedAt?: string | null;
+  dueDate: string;
 }
 
 export interface TodoStore {
@@ -20,4 +21,7 @@ export interface TodoStore {
   isError: boolean;
   error: string | null;
   fetchTodos: () => Promise<void>;
+  addTodo: (
+    todo: Omit<Task, 'id' | 'createdAt' | 'updatedAt'>
+  ) => Promise<void>;
 }

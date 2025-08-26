@@ -15,7 +15,7 @@ function App() {
         <Layout>
           <Routes>
             <Route path="/" element={<MainDashboard />} />
-            <Route path="/task" element={<MyTasks />} />
+            <Route path="/my-tasks" element={<MyTasks />} />
             <Route path="/categories" element={<TaskCategories />} />
           </Routes>
         </Layout>

@@ -10,9 +10,9 @@ export const ProgressBar = ({ data }: { data: Task[] }) => {
 
   const total = data.length;
 
-  const completedTasksPercentage = (completedTasks / total) * 100;
-  const inprogressTasksPercentage = (inprogressTasks / total) * 100;
-  const todoTasksPercentage = (todoTasks / total) * 100;
+  const completedTasksPercentage = Math.round((completedTasks / total) * 100);
+  const inprogressTasksPercentage = Math.round((inprogressTasks / total) * 100);
+  const todoTasksPercentage = Math.round((todoTasks / total) * 100);
 
   return (
     <div className="circular-bars">

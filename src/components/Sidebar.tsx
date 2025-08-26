@@ -10,7 +10,7 @@ import photo from '../assets/photo-user.jpg';
 export const SideBar = () => {
   const menuItems = [
     { path: '/', label: 'Dashboard', icon: dashIcon },
-    { path: '/task', label: 'My Task', icon: checkIcon },
+    { path: '/my-tasks', label: 'My Tasks', icon: checkIcon },
     { path: '/categories', label: 'Task Categories', icon: taskIcon },
     { path: '/settings', label: 'Settings', icon: settingsIcon },
     { path: '/help', label: 'Help', icon: markIcon },

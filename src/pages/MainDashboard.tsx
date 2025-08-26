@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import todoIcon from '../assets/to-do-icon.svg';
 import plusIcon from '../assets/plus-icon-2.svg';
@@ -8,15 +9,22 @@ import completedBarIcon from '../assets/completed-bar-icon.svg';
 import type { Task } from '../types';
 import { getTodos } from '../api';
 import { ProgressBar } from '../components/ProgressBar';
+import { AddTaskModal } from '../components/AddTaskModal';
 
 export const MainDashboard = () => {
+  const [isAddModalOpen, setAddModelOpen] = useState(false);
+
+  const handleOpenAddModal = () => setAddModelOpen(true);
+  const handleCloseAddModal = () => setAddModelOpen(false);
+
   const { data, isLoading, isError, error } = useQuery({
     queryKey: ['todos'],
     queryFn: getTodos,
   });
 
-  if (isLoading) return <div>Loading...</div>;
+  //console.log(data);
 
+  if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>Error: {error.message}</div>;
 
   const completedTasks = data.filter((i: Task) => i.status == 'completed');
@@ -35,7 +43,9 @@ export const MainDashboard = () => {
               <span className="btn-icon">
                 <img src={plusIcon} alt="plus icon" />
               </span>
-              <span className="btn-label">Add Task</span>
+              <span className="btn-label" onClick={handleOpenAddModal}>
+                Add Task
+              </span>
             </button>
           </div>
           <p className="section-date">
@@ -43,9 +53,6 @@ export const MainDashboard = () => {
           </p>
           {data.map((task: Task) => (
             <div className="todo-card" key={task.id}>
-              <div className="todo-status">
-                <img src={pendingIcon} alt="progress icon" />
-              </div>
               <div className="todo-content">
                 <div className="todo-text">
                   <h3>{task.title}</h3>
@@ -92,15 +99,13 @@ export const MainDashboard = () => {
           </div>
           {completedTasks.map((task: Task) => (
             <div key={task.id} className="todo-card completed">
-              <div className="todo-status">
-                <img src={completedBarIcon} alt="completed bar icon" />
-              </div>
               <div className="todo-content">
                 <div className="todo-text">
                   <h3>{task.title}</h3>
                   <p>{task.description}</p>
                   <div className="todo-information">
                     <p>
+                      Status:
                       <span className="status -completed">{task.status}</span>
                     </p>
                     <p className="todo-date">Created on: 20/06/2023</p>
@@ -114,6 +119,7 @@ export const MainDashboard = () => {
           ))}
         </div>
       </div>
+      <AddTaskModal isOpen={isAddModalOpen} onClose={handleCloseAddModal} />
     </div>
   );
 };
