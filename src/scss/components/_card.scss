@@ -4,8 +4,21 @@
 .todo-card {
   border: 1px solid variables.$gray-2-color;
   border-radius: 14px;
-  padding: 0.8rem 2rem;
+  padding: 1.5rem;
   margin-bottom: 1rem;
+  transition: all 0.2s ease;
+  &.low {
+    border-top: 4px solid #0225ff;
+  }
+
+  &.moderate {
+    border-top: 4px solid #3abeff;
+  }
+
+  &.extreme {
+    border-top: 4px solid #f21e1e;
+  }
+
   .todo-content {
     display: flex;
     flex-direction: row;
@@ -37,6 +50,9 @@
         &.status {
           @include mix.status-colors;
         }
+        &.priority {
+          @include mix.priority-colors;
+        }
       }
       &.todo-date {
         color: variables.$gray-2-color;
@@ -44,12 +60,20 @@
     }
   }
   &.completed {
+    border-top: 4px solid #05a301;
+
     p {
       margin-bottom: 1rem;
+      &:last-child {
+        margin-bottom: 0rem;
+      }
     }
-    .todo-information {
-      display: flex;
-      flex-direction: column;
+    .todo-content {
+      margin-bottom: 0px;
+      .todo-information {
+        display: flex;
+        flex-direction: column;
+      }
     }
   }
 }

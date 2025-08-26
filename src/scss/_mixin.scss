@@ -8,3 +8,12 @@
     }
   }
 }
+
+@mixin priority-colors {
+  @each $priority, $color in variables.$priority-colors {
+    &.-#{$priority} {
+      --priority-color: #{$color};
+      color: var(--priority-color);
+    }
+  }
+}

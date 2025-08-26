@@ -1,4 +1,3 @@
-import { useQuery } from '@tanstack/react-query';
 import type { Task } from '../types';
 
 const BIN_ID = '68accf96ae596e708fd5c01e';

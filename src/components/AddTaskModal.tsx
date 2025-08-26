@@ -104,7 +104,6 @@ export const AddTaskModal: React.FC<AddTaskModalProps> = ({
           />
         </div>
 
-        {/* Status Checkbox Group */}
         <div className="form-group checkbox-group">
           <label className="checkbox-group-label">Status</label>
           <div className="checkbox-options">
@@ -138,7 +137,6 @@ export const AddTaskModal: React.FC<AddTaskModalProps> = ({
           </div>
         </div>
 
-        {/* Priority Checkbox Group */}
         <div className="form-group checkbox-group">
           <label className="checkbox-group-label">Priority</label>
           <div className="checkbox-options">
