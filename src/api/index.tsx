@@ -18,7 +18,6 @@ export const getTodos = async (): Promise<Task[]> => {
     if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
 
     const data = await response.json();
-    //console.log(data);
     return data.record;
   } catch (error) {
     console.error('Could not fetch todos:', error);

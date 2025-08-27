@@ -35,7 +35,7 @@ export default async function handler(req, res) {
         }
 
         const data = await getResponse.json();
-        res.status(200).json(data.record);
+        res.status(200).json(data);
         break;
 
       case 'POST':

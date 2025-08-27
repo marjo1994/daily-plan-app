@@ -29,7 +29,8 @@ export const MainDashboard = () => {
   if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>Error: {error.message}</div>;
 
-  const completedTasks = data?.filter((i: Task) => i.status == 'completed');
+  const completedTasks =
+    data?.filter((i: Task) => i.status == 'completed') || [];
 
   return (
     <div className="main-dashboard">
