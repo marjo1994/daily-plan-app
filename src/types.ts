@@ -25,3 +25,8 @@ export interface TodoStore {
     todo: Omit<Task, 'id' | 'createdAt' | 'updatedAt'>
   ) => Promise<void>;
 }
+
+export interface DeleteResponse {
+  message: string;
+  deletedId: string;
+}

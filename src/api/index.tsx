@@ -1,30 +1,24 @@
-import type { Task } from '../types';
+import type { Task, DeleteResponse } from '../types';
 
-const BIN_ID = '68accf96ae596e708fd5c01e';
-const MASTER_KEY =
-  '$2a$10$TZSBh4LblnE7rgs.yRLL9ecUJjhqHQiDMP72tdIyXhkR98AjJBMcG';
+const API_BASE = '/api/todos';
 
-const BASE_URL = `https://api.jsonbin.io/v3/b/${BIN_ID}`;
+//const BIN_ID = '68accf96ae596e708fd5c01e';
+//const MASTER_KEY = '$2a$10$TZSBh4LblnE7rgs.yRLL9ecUJjhqHQiDMP72tdIyXhkR98AjJBMcG';
+//const API_BASE = `https://api.jsonbin.io/v3/b/${BIN_ID}`;
 
-const generateId = (): string => {
-  return Date.now().toString(36) + Math.random().toString(36).substring(2);
-};
-
-export const getTodos = async () => {
+export const getTodos = async (): Promise<Task[]> => {
   try {
-    const response = await fetch(`${BASE_URL}`, {
+    const response = await fetch(API_BASE, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        'X-Master-Key': MASTER_KEY,
       },
-      mode: 'cors',
     });
 
     if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
 
     const data = await response.json();
-    //console.log('Todos:', data);
+    //console.log(data);
     return data.record;
   } catch (error) {
     console.error('Could not fetch todos:', error);
@@ -38,27 +32,19 @@ export const addTodo = async (
   try {
     const currentTodos = await getTodos();
 
-    const newTodo: Task = {
-      ...todo,
-      id: generateId(),
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
-    };
-
-    const updatedTodos = [...currentTodos, newTodo];
-    const response = await fetch(`${BASE_URL}`, {
-      method: 'PUT',
+    const response = await fetch(API_BASE, {
+      method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'X-Master-Key': MASTER_KEY,
       },
-      body: JSON.stringify(updatedTodos),
+      body: JSON.stringify({ todo, currentTodos }),
     });
 
     if (!response.ok) {
       throw new Error(`Failed to add todo: ${response.statusText}`);
     }
-    return newTodo;
+
+    return await response.json();
   } catch (error) {
     console.error('Error adding todo:', error);
     throw error;
@@ -69,26 +55,44 @@ export const updateTodo = async (updatedTodo: Task): Promise<Task> => {
   try {
     const currentTodos = await getTodos();
 
-    const updatedTodos = currentTodos.map((todo: Task) =>
-      todo.id === updatedTodo.id
-        ? { ...updatedTodo, updatedAt: new Date().toISOString() }
-        : todo
-    );
-    const response = await fetch(`${BASE_URL}`, {
+    const response = await fetch(API_BASE, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
-        'X-Master-Key': MASTER_KEY,
       },
-      body: JSON.stringify(updatedTodos),
+      body: JSON.stringify({ updatedTodo, currentTodos }),
     });
 
     if (!response.ok) {
       throw new Error(`Failed to update todo: ${response.statusText}`);
     }
-    return updatedTodo;
+
+    return await response.json();
   } catch (error) {
     console.error('Error updating todo:', error);
+    throw error;
+  }
+};
+
+export const deleteTodo = async (todoId: string): Promise<DeleteResponse> => {
+  try {
+    const currentTodos = await getTodos();
+
+    const response = await fetch(API_BASE, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ todoId, currentTodos }),
+    });
+
+    if (!response.ok) {
+      throw new Error(`Failed to delete todo: ${response.statusText}`);
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error('Error deleting todo:', error);
     throw error;
   }
 };

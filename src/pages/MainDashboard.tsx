@@ -19,17 +19,17 @@ export const MainDashboard = () => {
   const handleOpenAddModal = () => setAddModelOpen(true);
   const handleCloseAddModal = () => setAddModelOpen(false);
 
-  const { data, isLoading, isError, error } = useQuery({
+  const { data, isLoading, isError, error } = useQuery<Task[]>({
     queryKey: ['todos'],
     queryFn: getTodos,
   });
 
-  console.log('data', data);
+  //console.log('data', data);
 
   if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>Error: {error.message}</div>;
 
-  const completedTasks = data.filter((i: Task) => i.status == 'completed');
+  const completedTasks = data?.filter((i: Task) => i.status == 'completed');
 
   return (
     <div className="main-dashboard">
@@ -53,7 +53,7 @@ export const MainDashboard = () => {
           <p className="section-date">
             20 June <span>Today</span>
           </p>
-          {data.map((task: Task) => (
+          {data?.map((task: Task) => (
             <div className={`todo-card ${task.priority}`} key={task.id}>
               <div className="todo-content">
                 <div className="todo-text">
@@ -99,7 +99,7 @@ export const MainDashboard = () => {
               <span className="section-label">Task Status</span>
             </div>
           </div>
-          <ProgressBar data={data} />
+          {data && <ProgressBar data={data} />}
         </div>
         <div className="section-dashboard">
           <div className="section-header">
@@ -108,7 +108,7 @@ export const MainDashboard = () => {
               <span className="section-label">Completed Task</span>
             </div>
           </div>
-          {completedTasks.map((task: Task) => (
+          {completedTasks?.map((task: Task) => (
             <div key={task.id} className="todo-card completed">
               <div className="todo-content">
                 <div className="todo-text">
